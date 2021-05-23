@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float Speed;
     public Rigidbody RB;
     public Boundary Border;
+    public float Tilt;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -23,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
         
         Vector3 Movement = new Vector3(MoveHorizontal, 0.0f, MoveVertical);
         RB.velocity = Movement * Speed;
+        
+        RB.rotation = Quaternion.Euler(0.0f, 0.0f, RB.velocity.x * (-Tilt));
 
         RB.position = new Vector3(
             Mathf.Clamp(RB.position.x, Border.xMin, Border.xMax),

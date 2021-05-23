@@ -173,6 +173,7 @@ MonoBehaviour:
     xMax: 96
     zMin: -17
     zMax: 85
+  Tilt: 0.5
 --- !u!54 &239972680
 Rigidbody:
   m_ObjectHideFlags: 0
