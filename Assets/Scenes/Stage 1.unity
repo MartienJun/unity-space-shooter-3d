@@ -130,6 +130,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 10096975}
+  - component: {fileID: 10096977}
+  - component: {fileID: 10096976}
+  - component: {fileID: 10096978}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Untagged
@@ -152,6 +155,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &10096976
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10096974}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &10096977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10096974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e61c66629ee1140885f44cacc22cda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rotate: 2
+  RB: {fileID: 10096976}
+--- !u!136 &10096978
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10096974}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 5.770526
+  m_Height: 14.328675
+  m_Direction: 2
+  m_Center: {x: -0.071392536, y: -0.2653222, z: 0.33852148}
 --- !u!1 &84579744
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,7 +533,7 @@ PrefabInstance:
     - target: {fileID: 8880819237238517064, guid: 543f85c367b24464098124fcc11a6955,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7352589
       objectReference: {fileID: 0}
     - target: {fileID: 8880819237238517064, guid: 543f85c367b24464098124fcc11a6955,
         type: 3}
@@ -496,7 +543,7 @@ PrefabInstance:
     - target: {fileID: 8880819237238517064, guid: 543f85c367b24464098124fcc11a6955,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.6777864
       objectReference: {fileID: 0}
     - target: {fileID: 8880819237238517064, guid: 543f85c367b24464098124fcc11a6955,
         type: 3}
@@ -511,7 +558,7 @@ PrefabInstance:
     - target: {fileID: 8880819237238517064, guid: 543f85c367b24464098124fcc11a6955,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 85.342
       objectReference: {fileID: 0}
     - target: {fileID: 8880819237238517064, guid: 543f85c367b24464098124fcc11a6955,
         type: 3}
