@@ -15,8 +15,20 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody RB;
     public Boundary Border;
     public float Tilt;
+    public GameObject Laser;
+    public Transform LaserSpawn;
+    public float FireRate;
+    private float NextFire;
 
-    // Update is called once per frame
+    void Update()
+    {
+        if(Input.GetKey(KeyCode.Space) && Time.time > NextFire)
+        {
+            NextFire = Time.time + FireRate;
+            Instantiate(Laser, LaserSpawn.position, LaserSpawn.rotation);
+        }
+    }
+
     void FixedUpdate()
     {
         float MoveHorizontal = Input.GetAxis("Horizontal");
