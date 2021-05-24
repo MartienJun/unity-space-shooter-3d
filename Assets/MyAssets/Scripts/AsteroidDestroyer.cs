@@ -6,7 +6,7 @@ public class AsteroidDestroyer : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Boundary")
+        if(other.CompareTag("Boundary") || other.CompareTag("Enemy"))
         {
             return;
         }
