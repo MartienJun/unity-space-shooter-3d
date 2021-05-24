@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject Asteroit;
+    public GameObject[] Asteroits;
     public Vector3 SpawnValue;
     public int AsteroitCount;
     public float SpawnWait;
@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(StartWait);
         while(true)
         {
+            GameObject Asteroit = Asteroits[Random.Range(0, Asteroits.Length)];
             for(int asteroit = 0; asteroit < AsteroitCount; asteroit++)
             {
                 Vector3 SpawnPosition = new Vector3(Random.Range(
