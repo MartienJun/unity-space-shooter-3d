@@ -261,10 +261,10 @@ MonoBehaviour:
   - {fileID: 7412934321605442124, guid: a00958e51672b9b4095e52e0913c9d08, type: 3}
   - {fileID: 4027891488970944893, guid: e09bfca65218516468f7cf0eae640607, type: 3}
   SpawnValue: {x: 90, y: 0, z: 45}
-  AsteroitCount: 10
-  SpawnWait: 2
+  AsteroitCount: 3
+  SpawnWait: 0.5
   StartWait: 1
-  WaveWait: 4
+  WaveWait: 2
 --- !u!1 &709196196
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,6 +464,11 @@ PrefabInstance:
     - target: {fileID: 5593706408021210784, guid: 558cd381e09d5a547b6e26419f9c18ee,
         type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5593706408021210784, guid: 558cd381e09d5a547b6e26419f9c18ee,
+        type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5593706408021210787, guid: 558cd381e09d5a547b6e26419f9c18ee,

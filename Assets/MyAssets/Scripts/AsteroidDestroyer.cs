@@ -25,6 +25,10 @@ public class AsteroidDestroyer : MonoBehaviour
                         Destroy(other.gameObject);
                         Destroy(gameObject);
                     }
+                    if (other.CompareTag("Boundary"))
+                    {
+                        return;
+                    }
                 }
                 break;
             case "Asteroid":
@@ -38,6 +42,10 @@ public class AsteroidDestroyer : MonoBehaviour
                     {
                         Destroy(other.gameObject);
                         Destroy(gameObject);
+                    }
+                    if (other.CompareTag("Boundary") || other.CompareTag("Enemy"))
+                    {
+                        return;
                     }
                 }
                 break;
@@ -53,21 +61,26 @@ public class AsteroidDestroyer : MonoBehaviour
                         Destroy(other.gameObject);
                         Destroy(gameObject);
                     }
+                    if (other.CompareTag("Boundary") || other.CompareTag("Enemy"))
+                    {
+                        return;
+                    }
                 }
                 break;
             case "Boss":
                 {
-                    if(other.CompareTag("Player"))
-                    {
-                        Destroy(other.gameObject);
-                        Destroy(gameObject);
-                    }
                     if (other.CompareTag("PlayerBullet"))
                     {
                         Destroy(other.gameObject);
                         Destroy(gameObject);
                     }
+                    if (other.CompareTag("Boundary") || other.CompareTag("Enemy"))
+                    {
+                        return;
+                    }
+
                 }
+                
                 break;
         }
         /*if(other.CompareTag("Boundary") || other.CompareTag("Enemy"))
