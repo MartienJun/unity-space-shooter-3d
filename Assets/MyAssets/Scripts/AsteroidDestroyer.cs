@@ -6,12 +6,76 @@ public class AsteroidDestroyer : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Boundary") || other.CompareTag("Enemy"))
+        switch (gameObject.tag)
+        {
+            case "Player":
+                {
+                    if(other.CompareTag("Asteroid"))
+                    {
+                        Destroy(other.gameObject);
+                        Destroy(gameObject);
+                    }
+                    if(other.CompareTag("Enemy"))
+                    {
+                        Destroy(other.gameObject);
+                        Destroy(gameObject);
+                    }
+                    if(other.CompareTag("Boss"))
+                    {
+                        Destroy(other.gameObject);
+                        Destroy(gameObject);
+                    }
+                }
+                break;
+            case "Asteroid":
+                {
+                    if(other.CompareTag("PlayerBullet"))
+                    {
+                        Destroy(other.gameObject);
+                        Destroy(gameObject);
+                    }
+                    if (other.CompareTag("Player"))
+                    {
+                        Destroy(other.gameObject);
+                        Destroy(gameObject);
+                    }
+                }
+                break;
+            case "Enemy":
+                {
+                    if(other.CompareTag("Player"))
+                    {
+                        Destroy(other.gameObject);
+                        Destroy(gameObject);
+                    }
+                    if (other.CompareTag("PlayerBullet"))
+                    {
+                        Destroy(other.gameObject);
+                        Destroy(gameObject);
+                    }
+                }
+                break;
+            case "Boss":
+                {
+                    if(other.CompareTag("Player"))
+                    {
+                        Destroy(other.gameObject);
+                        Destroy(gameObject);
+                    }
+                    if (other.CompareTag("PlayerBullet"))
+                    {
+                        Destroy(other.gameObject);
+                        Destroy(gameObject);
+                    }
+                }
+                break;
+        }
+        /*if(other.CompareTag("Boundary") || other.CompareTag("Enemy"))
         {
             return;
         }
-
+        
         Destroy(other.gameObject);
-        Destroy(gameObject);
+        Destroy(gameObject);*/
     }
 }

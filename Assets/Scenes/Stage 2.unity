@@ -213,6 +213,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!54 &651365017 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 5593706408021210797, guid: 558cd381e09d5a547b6e26419f9c18ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 2107325010}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1012322662 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5593706408100565572, guid: 558cd381e09d5a547b6e26419f9c18ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 2107325010}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1400448704
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +355,7 @@ MonoBehaviour:
   - {fileID: 3516574022116423961, guid: 84235496a2eb8ae46b7857761498a079, type: 3}
   - {fileID: 5112767505888199464, guid: 75a182a5148feef41bf161a4b96d71f3, type: 3}
   - {fileID: 1242868692605836429, guid: caf6a36f4507dee4f8b23f9078534529, type: 3}
-  SpawnValue: {x: 50, y: 0, z: 40}
+  SpawnValue: {x: 90, y: 0, z: 45}
   AsteroitCount: 5
   SpawnWait: 2
   StartWait: 1
@@ -473,13 +485,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5593706408021210786, guid: 558cd381e09d5a547b6e26419f9c18ee,
         type: 3}
+      propertyPath: RB
+      value: 
+      objectReference: {fileID: 651365017}
+    - target: {fileID: 5593706408021210786, guid: 558cd381e09d5a547b6e26419f9c18ee,
+        type: 3}
+      propertyPath: LaserSpawn
+      value: 
+      objectReference: {fileID: 1012322662}
+    - target: {fileID: 5593706408021210786, guid: 558cd381e09d5a547b6e26419f9c18ee,
+        type: 3}
       propertyPath: Border.xMax
-      value: 71
+      value: 98
       objectReference: {fileID: 0}
     - target: {fileID: 5593706408021210786, guid: 558cd381e09d5a547b6e26419f9c18ee,
         type: 3}
       propertyPath: Border.xMin
-      value: -59.5
+      value: -86
       objectReference: {fileID: 0}
     - target: {fileID: 5593706408021210787, guid: 558cd381e09d5a547b6e26419f9c18ee,
         type: 3}
