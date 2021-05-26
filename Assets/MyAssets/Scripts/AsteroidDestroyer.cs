@@ -12,16 +12,19 @@ public class AsteroidDestroyer : MonoBehaviour
                 {
                     if(other.CompareTag("Asteroid"))
                     {
+                        
                         Destroy(other.gameObject);
                         Destroy(gameObject);
                     }
                     if(other.CompareTag("Enemy"))
                     {
+                        
                         Destroy(other.gameObject);
                         Destroy(gameObject);
                     }
                     if(other.CompareTag("Boss"))
                     {
+                        
                         Destroy(other.gameObject);
                         Destroy(gameObject);
                     }
@@ -35,11 +38,13 @@ public class AsteroidDestroyer : MonoBehaviour
                 {
                     if(other.CompareTag("PlayerBullet"))
                     {
+                        
                         Destroy(other.gameObject);
                         Destroy(gameObject);
                     }
                     if (other.CompareTag("Player"))
                     {
+                        
                         Destroy(other.gameObject);
                         Destroy(gameObject);
                     }
@@ -53,11 +58,13 @@ public class AsteroidDestroyer : MonoBehaviour
                 {
                     if(other.CompareTag("Player"))
                     {
+                        
                         Destroy(other.gameObject);
                         Destroy(gameObject);
                     }
                     if (other.CompareTag("PlayerBullet"))
                     {
+                        
                         Destroy(other.gameObject);
                         Destroy(gameObject);
                     }
@@ -71,6 +78,7 @@ public class AsteroidDestroyer : MonoBehaviour
                 {
                     if (other.CompareTag("PlayerBullet"))
                     {
+                        
                         Destroy(other.gameObject);
                         Destroy(gameObject);
                     }

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponController : MonoBehaviour
+public class BossWeaponController : MonoBehaviour
 {
     public GameObject Bullet;
-    public Transform ShotSpawn;
+    public Transform[] ShotSpawns;
     public float Delay;
     public float FireRate;
 
@@ -19,7 +19,13 @@ public class WeaponController : MonoBehaviour
 
     void Fire()
     {
-        Instantiate(Bullet, ShotSpawn.position, ShotSpawn.rotation);
+        foreach (var ShotSpawn in ShotSpawns)
+        {
+            Instantiate(Bullet, ShotSpawn.position, ShotSpawn.rotation);
+            
+        }
         Shoot.Play();
     }
 }
+
+

@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         {
             NextFire = Time.time + FireRate;
             Instantiate(Laser, LaserSpawn.position, LaserSpawn.rotation);
+            GetComponent<AudioSource>().Play();
         }
     }
 
