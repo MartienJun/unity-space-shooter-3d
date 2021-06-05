@@ -4,6 +4,22 @@ using UnityEngine;
 
 public class AsteroidDestroyer : MonoBehaviour
 {
+    public int BossHealth;
+    private GameController GM;
+
+    private void Start()
+    {
+        GameObject gameControllerObject = GameObject.FindWithTag("GameController");
+        if (gameControllerObject != null)
+        {
+            GM = gameControllerObject.GetComponent<GameController>();
+        }
+        if (GM == null)
+        {
+            Debug.Log("Cannot find 'GameController' script");
+        }
+    }
+
     void OnTriggerEnter(Collider other)
     {
         switch (gameObject.tag)
@@ -15,18 +31,21 @@ public class AsteroidDestroyer : MonoBehaviour
                         
                         Destroy(other.gameObject);
                         Destroy(gameObject);
+                        GM.GameOver();
                     }
                     if(other.CompareTag("Enemy"))
                     {
                         
                         Destroy(other.gameObject);
                         Destroy(gameObject);
+                        GM.GameOver();
                     }
                     if(other.CompareTag("Boss"))
                     {
                         
                         Destroy(other.gameObject);
                         Destroy(gameObject);
+                        GM.GameOver();
                     }
                     if (other.CompareTag("Boundary"))
                     {
@@ -44,9 +63,9 @@ public class AsteroidDestroyer : MonoBehaviour
                     }
                     if (other.CompareTag("Player"))
                     {
-                        
                         Destroy(other.gameObject);
                         Destroy(gameObject);
+                        GM.GameOver();
                     }
                     if (other.CompareTag("Boundary") || other.CompareTag("Enemy"))
                     {
@@ -61,6 +80,7 @@ public class AsteroidDestroyer : MonoBehaviour
                         
                         Destroy(other.gameObject);
                         Destroy(gameObject);
+                        GM.GameOver();
                     }
                     if (other.CompareTag("PlayerBullet"))
                     {
@@ -76,11 +96,15 @@ public class AsteroidDestroyer : MonoBehaviour
                 break;
             case "Boss":
                 {
+                    
                     if (other.CompareTag("PlayerBullet"))
                     {
-                        
                         Destroy(other.gameObject);
-                        Destroy(gameObject);
+                        BossHealth--;
+                        if (BossHealth <= 0)
+                        {
+                            Destroy(gameObject);
+                        }
                     }
                     if (other.CompareTag("Boundary") || other.CompareTag("Enemy"))
                     {

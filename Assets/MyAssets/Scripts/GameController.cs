@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -11,33 +13,67 @@ public class GameController : MonoBehaviour
     public float StartWait;
     public float WaveWait;
 
+    
+
+    private bool gameOver;
+    private bool restart;
+   
+
     void Start()
     {
+        gameOver = false;
+        restart = false;
+        
         StartCoroutine(SpawnWave());
+    }
+
+    
+    private void Update()
+    {
+        if (restart)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
     }
 
     // Update is called once per frame
     IEnumerator SpawnWave()
     {
         yield return new WaitForSeconds(StartWait);
-        while(true)
+        while (true)
         {
             GameObject Asteroit = Asteroits[Random.Range(0, Asteroits.Length)];
-            for(int asteroit = 0; asteroit < AsteroitCount; asteroit++)
+            for (int asteroit = 0; asteroit < AsteroitCount; asteroit++)
             {
                 Vector3 SpawnPosition = new Vector3(Random.Range(
-                    (-SpawnValue.x), SpawnValue.x), 
-                    SpawnValue.y, 
+                    (-SpawnValue.x), SpawnValue.x),
+                    SpawnValue.y,
                     SpawnValue.z
                 );
                 Quaternion SpawnRotation = Quaternion.identity;
-                
+
                 Instantiate(Asteroit, SpawnPosition, SpawnRotation);
 
                 yield return new WaitForSeconds(SpawnWait);
+
             }
 
-            yield return new WaitForSeconds(WaveWait);
+                yield return new WaitForSeconds(WaveWait);
+            if (gameOver)
+            {
+                restart = true;
+                break;
+            }
         }
+    }
+
+    
+
+    public void GameOver()
+    {
+        gameOver = true;
     }
 }
