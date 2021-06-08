@@ -1,14 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AsteroidDestroyer : MonoBehaviour
 {
+    
     public int BossHealth;
     private GameController GM;
 
     private void Start()
     {
+        
+
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
         if (gameControllerObject != null)
         {
@@ -19,6 +24,9 @@ public class AsteroidDestroyer : MonoBehaviour
             Debug.Log("Cannot find 'GameController' script");
         }
     }
+
+    
+
 
     void OnTriggerEnter(Collider other)
     {
@@ -31,13 +39,16 @@ public class AsteroidDestroyer : MonoBehaviour
                         
                         Destroy(other.gameObject);
                         Destroy(gameObject);
+                        Time.timeScale = 0;
                         GM.GameOver();
+                        
                     }
                     if(other.CompareTag("Enemy"))
                     {
                         
                         Destroy(other.gameObject);
                         Destroy(gameObject);
+                        Time.timeScale = 0;
                         GM.GameOver();
                     }
                     if(other.CompareTag("Boss"))
@@ -45,6 +56,7 @@ public class AsteroidDestroyer : MonoBehaviour
                         
                         Destroy(other.gameObject);
                         Destroy(gameObject);
+                        Time.timeScale = 0;
                         GM.GameOver();
                     }
                     if (other.CompareTag("Boundary"))
@@ -55,16 +67,25 @@ public class AsteroidDestroyer : MonoBehaviour
                 break;
             case "Asteroid":
                 {
+                    
                     if(other.CompareTag("PlayerBullet"))
                     {
-                        
+                        ScoreController.Score += 1;
                         Destroy(other.gameObject);
                         Destroy(gameObject);
+                        if(ScoreController.Score >= 10)
+                        {
+                            Time.timeScale = 0;
+                            GM.NextStage();
+                            
+                        }
+                        
                     }
                     if (other.CompareTag("Player"))
                     {
                         Destroy(other.gameObject);
                         Destroy(gameObject);
+                        Time.timeScale = 0;
                         GM.GameOver();
                     }
                     if (other.CompareTag("Boundary") || other.CompareTag("Enemy"))
@@ -80,15 +101,22 @@ public class AsteroidDestroyer : MonoBehaviour
                         
                         Destroy(other.gameObject);
                         Destroy(gameObject);
+                        Time.timeScale = 0;
                         GM.GameOver();
                     }
                     if (other.CompareTag("PlayerBullet"))
                     {
-                        
+                        ScoreController.Score += 1;
                         Destroy(other.gameObject);
                         Destroy(gameObject);
+                        if (ScoreController.Score == 30)
+                        {
+                            Time.timeScale = 0;
+                            GM.NextStage();
+                        }
+
                     }
-                    if (other.CompareTag("Boundary") || other.CompareTag("Enemy"))
+                    if (other.CompareTag("Boundary") || other.CompareTag("Enemy") || other.CompareTag("Boss"))
                     {
                         return;
                     }
@@ -104,6 +132,9 @@ public class AsteroidDestroyer : MonoBehaviour
                         if (BossHealth <= 0)
                         {
                             Destroy(gameObject);
+                            
+                            GM.WinBoss();
+                            Time.timeScale = 0;
                         }
                     }
                     if (other.CompareTag("Boundary") || other.CompareTag("Enemy"))

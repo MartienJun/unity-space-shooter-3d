@@ -7,22 +7,30 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public GameObject[] Asteroits;
+    public Text WinText;
+    public Text GameOverText;
     public Vector3 SpawnValue;
     public int AsteroitCount;
     public float SpawnWait;
     public float StartWait;
     public float WaveWait;
 
-    
 
+    private bool BossKilled;
     private bool gameOver;
-    private bool restart;
+    private bool Win;
+    
    
 
     void Start()
     {
+        WinText.text = "";
+        GameOverText.text = "";
+
+        BossKilled = false;
         gameOver = false;
-        restart = false;
+        
+        Win = false;
         
         StartCoroutine(SpawnWave());
     }
@@ -30,12 +38,31 @@ public class GameController : MonoBehaviour
     
     private void Update()
     {
-        if (restart)
+        if (gameOver)
         {
+            GameOverText.text = "Press R To Restart";
             if (Input.GetKeyDown(KeyCode.R))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                Time.timeScale = 1;
             }
+            
+        }
+
+        if (Win)
+        {
+            WinText.text = "Press Space To Continue";
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                Time.timeScale = 1;
+            }
+        }
+
+        if (BossKilled)
+        {
+            WinText.text = "YOU WIN !";
+            
         }
     }
 
@@ -62,11 +89,7 @@ public class GameController : MonoBehaviour
             }
 
                 yield return new WaitForSeconds(WaveWait);
-            if (gameOver)
-            {
-                restart = true;
-                break;
-            }
+            
         }
     }
 
@@ -75,5 +98,15 @@ public class GameController : MonoBehaviour
     public void GameOver()
     {
         gameOver = true;
+    }
+
+    public void NextStage()
+    {
+        Win = true;
+    }
+
+    public void WinBoss()
+    {
+        BossKilled = true;
     }
 }
