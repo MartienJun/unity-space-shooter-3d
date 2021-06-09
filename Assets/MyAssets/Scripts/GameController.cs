@@ -44,6 +44,7 @@ public class GameController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.R))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                
                 Time.timeScale = 1;
             }
             
@@ -55,14 +56,20 @@ public class GameController : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Space))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                
                 Time.timeScale = 1;
             }
         }
 
         if (BossKilled)
         {
-            WinText.text = "YOU WIN !";
-            
+            WinText.text = "YOU WIN ! Press Space To Main Menu";
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene("MainScene");
+                
+                Time.timeScale = 1;
+            }
         }
     }
 

@@ -9,6 +9,7 @@ public class AsteroidDestroyer : MonoBehaviour
     
     public int BossHealth;
     private GameController GM;
+    
 
     private void Start()
     {
@@ -41,6 +42,7 @@ public class AsteroidDestroyer : MonoBehaviour
                         Destroy(gameObject);
                         Time.timeScale = 0;
                         GM.GameOver();
+                        ScoreController.Score = 0;
                         
                     }
                     if(other.CompareTag("Enemy"))
@@ -50,6 +52,7 @@ public class AsteroidDestroyer : MonoBehaviour
                         Destroy(gameObject);
                         Time.timeScale = 0;
                         GM.GameOver();
+                        ScoreController.Score = 0;
                     }
                     if(other.CompareTag("Boss"))
                     {
@@ -58,6 +61,7 @@ public class AsteroidDestroyer : MonoBehaviour
                         Destroy(gameObject);
                         Time.timeScale = 0;
                         GM.GameOver();
+                        ScoreController.Score = 0;
                     }
                     if (other.CompareTag("Boundary"))
                     {
@@ -71,10 +75,13 @@ public class AsteroidDestroyer : MonoBehaviour
                     if(other.CompareTag("PlayerBullet"))
                     {
                         ScoreController.Score += 1;
+                        
                         Destroy(other.gameObject);
                         Destroy(gameObject);
-                        if(ScoreController.Score >= 10)
+                        if(ScoreController.Score == 10)
                         {
+                            
+                            PlayerPrefs.SetInt("Score", ScoreController.Score);
                             Time.timeScale = 0;
                             GM.NextStage();
                             
@@ -87,6 +94,7 @@ public class AsteroidDestroyer : MonoBehaviour
                         Destroy(gameObject);
                         Time.timeScale = 0;
                         GM.GameOver();
+                        ScoreController.Score = 0;
                     }
                     if (other.CompareTag("Boundary") || other.CompareTag("Enemy"))
                     {
@@ -103,14 +111,18 @@ public class AsteroidDestroyer : MonoBehaviour
                         Destroy(gameObject);
                         Time.timeScale = 0;
                         GM.GameOver();
+                        ScoreController.Score = 0;
                     }
                     if (other.CompareTag("PlayerBullet"))
                     {
-                        ScoreController.Score += 1;
+                        PlayerPrefs.GetInt("Score", ScoreController.Score);
+                        ScoreController.Score += 2;
+                        
                         Destroy(other.gameObject);
                         Destroy(gameObject);
                         if (ScoreController.Score == 30)
                         {
+                            PlayerPrefs.SetInt("Score", ScoreController.Score);
                             Time.timeScale = 0;
                             GM.NextStage();
                         }
@@ -127,12 +139,15 @@ public class AsteroidDestroyer : MonoBehaviour
                     
                     if (other.CompareTag("PlayerBullet"))
                     {
+                        PlayerPrefs.GetInt("Score", ScoreController.Score);
+                        
                         Destroy(other.gameObject);
                         BossHealth--;
                         if (BossHealth <= 0)
                         {
                             Destroy(gameObject);
-                            
+                            ScoreController.Score += 100;
+                            PlayerPrefs.SetInt("Score", ScoreController.Score);
                             GM.WinBoss();
                             Time.timeScale = 0;
                         }

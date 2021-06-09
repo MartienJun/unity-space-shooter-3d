@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraControl : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class CameraControl : MonoBehaviour
         CurrentViews = Views[0];
     }
 
-    void Update()
+    /*void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -58,7 +59,7 @@ public class CameraControl : MonoBehaviour
             CurrentViews = Views[3];
             Panel4.SetActive(true);
         }
-    }
+    }*/
 
     public void StartClicked()
     {
@@ -95,10 +96,7 @@ public class CameraControl : MonoBehaviour
         Application.Quit();
     }
 
-    public void LoginClicked(string SceneName)
-    {
-        SceneManager.LoadScene(SceneName);
-    }
+    
 
     public void RegisterClicked()
     {

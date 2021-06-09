@@ -11,8 +11,7 @@ public class ScoreController : MonoBehaviour
     void Start()
     {
         ScoreText = GetComponent<Text>();
-        Score = 0;
-        ScoreText.text = "";
+        
     }
 
     // Update is called once per frame
